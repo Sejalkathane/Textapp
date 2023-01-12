@@ -112,7 +112,8 @@ export default function TextForm(props) {
             color: props.mode === "dark" ? "white" : "black",
           }}
         >
-          {text.split(" ").length} Words,{text.length} character
+          {text.split(" ").filter((element)=>{
+            return element.length!==0}).length} Words,{text.length} character
         </p>
         <p
           className="text"
@@ -121,7 +122,8 @@ export default function TextForm(props) {
             color: props.mode === "dark" ? "white" : "black",
           }}
         >
-          {0.008 * text.split("  ").length} Minutes read
+          {0.008 * text.split("  ").filter((element)=>{
+            return element.length!==0}).length} Minutes read
         </p>
         <h2>Preview</h2>
         <p

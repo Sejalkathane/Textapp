@@ -7,7 +7,7 @@ import About from "./components/About";
 import React, { useState } from "react";
 import Alert from "./components/Alert";
 
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 // import {Routes,Route} from 'react-router-dom'
 // let name="Sejal";
 
@@ -35,17 +35,33 @@ function App() {
     }, 1500);
   };
 
-  const toogleMode = () => {
+ 
+
+  const removeBodyClasses=()=>{
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-light')
+  }  
+
+   
+
+  const toogleMode = (cls) => {
+    removeBodyClasses();
+    console.log(cls);
+    document.body.classList.add('bg-'+cls)
     if (mode === "light") {
       setMode("dark");
       document.body.style.backgroundColor = "#060f2d";
       showAlert("Dark Mode Enable", "success");
-      document.title = "TextUtils-Dark Mode";
+      // document.title = "TextUtils-Dark Mode";
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("Light Mode Enable", "success");
-      document.title = "TextUtils-Light Mode";
+      // document.title = "TextUtils-Light Mode";
     }
   };
 
@@ -58,7 +74,7 @@ function App() {
         {/* my-3 margin increase */}
         <div className="container  my-3">
           <Routes>
-            <Route path="/about" element={<About />}></Route>
+            <Route path="/about" element={<About mode={mode} />}></Route>
             <Route path="/" element={<TextForm showAlert={showAlert}heading="Enter a Text to analyze"mode={mode}/>}> </Route>
           </Routes>
         </div>

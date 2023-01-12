@@ -2,7 +2,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 export default function Navbar(props) {
   return (
     <nav
@@ -45,16 +45,26 @@ export default function Navbar(props) {
           <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
           <button className="btn btn-outline-success" type="submit">Search</button>
         </form> */}
-          <div
-            className={`form-check form-switch text-${
-              props.mode === "light" ? "dark" : "light"
-            }`}
-          >
+
+          <div className="d-flex">
+            <div className="bg-primary rounded mx-2" onClick={() => { props.toogleMode('primary') }} style={{ height: "30px", width: "30px", cursor: "pointer" }}></div>
+
+            <div className="bg-danger rounded mx-2" onClick={() => {props.toogleMode('danger')}} style={{ height: "30px", width: "30px", cursor: "pointer" }}></div>
+
+            <div className="bg-success rounded mx-2" onClick={() => {  props.toogleMode('success')}} style={{ height: "30px", width: "30px", cursor: "pointer" }}  ></div>
+
+            <div className="bg-warning rounded mx-2" onClick={() => { props.toogleMode('warning') }} style={{ height: "30px", width: "30px", cursor: "pointer" }} ></div> 
+            </div>
+
+
+          <div className={`form-check form-switch text-${ props.mode === "light" ? "dark" : "light" }`}>
             <input
               className="form-check-input"
               type="checkbox"
               role="switch"
-              onClick={props.toogleMode}
+              onClick={() => {
+                props.toogleMode(null);
+              }}
               id="flexSwitchCheckDefault"
             />
             <label
